@@ -8,3 +8,8 @@
  * Time: 下午6:00
  */
 
+function route_class()
+{
+    return str_replace('.', '-', Route::currentRouteName());
+}
+
