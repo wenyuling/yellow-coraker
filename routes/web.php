@@ -16,3 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('/', 'PagesController@root')->name('root');
+
+# 用户点击登录按钮时请求的地址
+Route::get('/weixin/oauth', 'WeixinController@oauth');
+
+# 微信接口回调地址
+Route::get('/weixin/callback', 'WeixinController@callback');
+Auth::routes();
+

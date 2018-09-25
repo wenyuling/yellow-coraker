@@ -35,4 +35,13 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'weixin' => [
+        'client_id'     => env('WEIXIN_KEY', 'wx027d7c0a1f14a06c'),
+        'client_secret' => env('WEIXIN_SECRET', ''),
+        'redirect'      => env('WEIXIN_REDIRECT_URI' ,'http://yellow-croaker.test/auth/callback?driver=wechat'),
+
+        # 这一行配置非常重要，必须要写成这个地址。
+        'auth_base_uri' => 'https://open.weixin.qq.com/connect/qrconnect',
+    ],
+
 ];
