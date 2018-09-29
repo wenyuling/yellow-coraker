@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/email_verification/send', 'EmailVerificationController@send')->name('email_verification.send'); //手动发送激活邮件
 
     Route::group(['middleware' => 'email_verified'], function() {
-        
+
     });
 
 });
