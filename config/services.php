@@ -30,18 +30,18 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\User::class,
+        'model' => App\Models\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
 
-    'weixin' => [
+    'weixinweb' => [
         'client_id'     => env('WEIXIN_KEY', 'wx027d7c0a1f14a06c'),
-        'client_secret' => env('WEIXIN_SECRET', ''),
-        'redirect'      => env('WEIXIN_REDIRECT_URI' ,'http://yellow-croaker.test/auth/callback?driver=wechat'),
+        'client_secret' => env('WEIXIN_SECRET', '47d1803b34b09cacec20b0f213396ec0'),
+        'redirect'      => env('WEIXIN_REDIRECT_URI' ,'http://yellow-croaker.test/auth/weixin/callback'),
 
         # 这一行配置非常重要，必须要写成这个地址。
-        'auth_base_uri' => 'https://open.weixin.qq.com/connect/qrconnect',
+//        'auth_base_uri' => 'https://open.weixin.qq.com/connect/qrconnect',
     ],
 
 ];

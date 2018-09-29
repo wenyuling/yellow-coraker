@@ -18,9 +18,21 @@ Route::get('/', function () {
 Route::get('/', 'PagesController@root')->name('root');
 
 # 用户点击登录按钮时请求的地址
-Route::get('/weixin/oauth', 'WeixinController@oauth');
-
+Route::get('auth/weixin', 'WeixinController@redirectToProvider');
 # 微信接口回调地址
-Route::get('/weixin/callback', 'WeixinController@callback');
+Route::get('auth/weixin/callback', 'WeixinController@handleProviderCallback');
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/email_verify_notice', 'PagesController@emailVerifyNotice')->name('email_verify_notice');
+    Route::get('/email_verification/verify', 'EmailVerificationController@verify')->name('email_verification.verify'); //验证激活邮箱
+    Route::get('/email_verification/send', 'EmailVerificationController@send')->name('email_verification.send'); //手动发送激活邮件
+
+    Route::group(['middleware' => 'email_verified'], function() {
+        
+    });
+
+});
+
 Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
