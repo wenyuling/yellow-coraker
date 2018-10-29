@@ -16,6 +16,9 @@ Route::get('/', function () {
 });
 
 Route::get('/', 'PagesController@root')->name('root');
+Route::redirect('/', '/products')->name('root');
+Route::get('products', 'ProductsController@index')->name('products.index'); //商品首页列表
+Route::get('products/{product}', 'ProductsController@show')->name('products.show'); //商品详情
 
 # 用户点击登录按钮时请求的地址
 Route::get('auth/weixin', 'WeixinController@redirectToProvider');
@@ -36,8 +39,6 @@ Route::group(['middleware' => 'auth'], function() {
         Route::delete('user_addresses/{user_address}', 'UserAddressesController@destroy')->name('user_addresses.destroy');
     });
 
-    Route::redirect('/', '/products')->name('root');
-    Route::get('products', 'ProductsController@index')->name('products.index'); //商品首页列表
 
 });
 
