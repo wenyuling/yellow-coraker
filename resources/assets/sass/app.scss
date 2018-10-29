@@ -60,6 +60,12 @@ body {
   .pagination {
     margin-right: 5px;
   }
+  /*筛选组件样式*/
+  .search-form {
+    padding: 0 20px 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
   .products-list {
     padding: 0 15px;
     .product-item {
