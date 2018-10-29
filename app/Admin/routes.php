@@ -12,4 +12,8 @@ Route::group([
     $router->get('/', 'HomeController@index');
     $router->get('users', 'UsersController@index');
     $router->get('products', 'ProductsController@index'); //商品列表
+    $router->get('products/create', 'ProductsController@create'); //商品添加
+    $router->post('products', 'ProductsController@store'); //商品新增
+    $router->get('products/{id}/edit', 'ProductsController@edit'); //商品编辑
+    $router->put('products/{id}', 'ProductsController@update');
 });

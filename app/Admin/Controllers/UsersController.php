@@ -58,7 +58,7 @@ class UsersController extends Controller
 
             $grid->actions(function ($actions) {
                 // 不在每一行后面展示查看按钮
-                $actions->disableView();
+                //$actions->disableView();
 
                 // 不在每一行后面展示删除按钮
                 $actions->disableDelete();
