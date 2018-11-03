@@ -37,6 +37,9 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('user_addresses/{user_address}', 'UserAddressesController@edit')->name('user_addresses.edit'); //修改收货地址
         Route::put('user_addresses/{user_address}', 'UserAddressesController@update')->name('user_addresses.update'); //更新
         Route::delete('user_addresses/{user_address}', 'UserAddressesController@destroy')->name('user_addresses.destroy');
+
+        Route::post('products/{product}/favorite', 'ProductsController@favor')->name('products.favor'); //收藏
+        Route::delete('products/{product}/favorite', 'ProductsController@disfavor')->name('products.disfavor'); //取消收藏
     });
 
 
