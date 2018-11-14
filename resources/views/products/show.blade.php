@@ -108,14 +108,16 @@
 
             // 加入购物车按钮点击事件
             $('.btn-add-to-cart').click(function () {
-
                 // 请求加入购物车接口
                 axios.post('{{ route('cart.add') }}', {
                     sku_id: $('label.active input[name=skus]').val(), // CSS 选择器取得当前被选中的 SKU，并取得对应的 ID
                     amount: $('.cart_amount input').val(),
                 })
                     .then(function () { // 请求成功执行此回调
-                        swal('加入购物车成功', '', 'success');
+                        swal('加入购物车成功', '', 'success')
+                            .then(function () {
+                                location.href = '{{ route('cart.index') }}'; //跳转购物车页面
+                            });
                     }, function (error) { // 请求失败执行此回调
                         if (error.response.status === 401) {
 
@@ -128,7 +130,7 @@
                             var html = '<div>';
                             _.each(error.response.data.errors, function (errors) {
                                 _.each(errors, function (error) {
-                                    html += error+'<br>';
+                                    html += error + '<br>';
                                 })
                             });
                             html += '</div>';

@@ -6,6 +6,9 @@ use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
+/**
+ * @property  attributes
+ */
 class ProductsController extends Controller
 {
     /**
