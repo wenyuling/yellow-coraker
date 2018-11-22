@@ -16,4 +16,6 @@ Route::group([
     $router->post('products', 'ProductsController@store'); //商品新增
     $router->get('products/{id}/edit', 'ProductsController@edit'); //商品编辑
     $router->put('products/{id}', 'ProductsController@update');
+
+    $router->get('orders', 'OrdersController@index')->name('admin.orders.index'); //订单列表
 });
