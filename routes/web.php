@@ -55,6 +55,9 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('payment/{order}/wechat', 'PaymentController@payByWechat')->name('payment.wechat'); //微信支付功能
 
         Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received'); //确认收货接口
+
+        Route::get('orders/{order}/review', 'OrdersController@review')->name('orders.review.show'); //展示评价页面
+        Route::post('orders/{order}/review', 'OrdersController@sendReview')->name('orders.review.store'); //提交评价接口
     });
 
 });
