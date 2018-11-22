@@ -15,6 +15,7 @@ class OrdersController extends Controller
     use ModelForm;
 
     /**
+     * 订单列表
      * Index interface.
      *
      * @return Content
@@ -24,6 +25,20 @@ class OrdersController extends Controller
         return Admin::content(function (Content $content) {
             $content->header('订单列表');
             $content->body($this->grid());
+        });
+    }
+
+    /**
+     * 订单详情
+     * @param Order $order
+     * @return Content
+     */
+    public function show(Order $order)
+    {
+        return Admin::content(function (Content $content) use ($order) {
+            $content->header('查看订单');
+            // body 方法可以接受 Laravel 的视图作为参数
+            $content->body(view('admin.orders.show', ['order' => $order]));
         });
     }
 
