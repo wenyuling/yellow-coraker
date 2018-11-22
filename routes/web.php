@@ -53,6 +53,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('payment/alipay/return', 'PaymentController@alipayReturn')->name('payment.alipay.return'); //前端回调
 
         Route::get('payment/{order}/wechat', 'PaymentController@payByWechat')->name('payment.wechat'); //微信支付功能
+
+        Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received'); //确认收货接口
     });
 
 });
