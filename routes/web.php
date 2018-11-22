@@ -58,6 +58,8 @@ Route::group(['middleware' => 'auth'], function() {
 
         Route::get('orders/{order}/review', 'OrdersController@review')->name('orders.review.show'); //展示评价页面
         Route::post('orders/{order}/review', 'OrdersController@sendReview')->name('orders.review.store'); //提交评价接口
+
+        Route::post('orders/{order}/apply_refund', 'OrdersController@applyRefund')->name('orders.apply_refund'); //提交退款申请的接口
     });
 
 });
