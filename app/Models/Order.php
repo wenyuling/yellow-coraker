@@ -99,6 +99,17 @@ class Order extends Model
     }
 
     /**
+     * 关联优惠券
+     * @author: wenyuling(wenyuling10@163.com)
+     * @dateTime: 2018/11/30 下午2:30
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function couponCode()
+    {
+        return $this->belongsTo(CouponCode::class);
+    }
+
+    /**
      * 生成唯一订单号
      *
      * @author: wenyuling(wenyuling10@163.com)
