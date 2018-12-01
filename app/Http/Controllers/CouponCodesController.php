@@ -18,7 +18,7 @@ class CouponCodesController extends Controller
      * @return \Illuminate\Http\JsonResponse
      * @throws CouponCodeUnavailableException
      */
-    public function show($code)
+    public function show($code, Request $request)
     {
         // 判断优惠券是否存在
         if (!$record = CouponCode::where('code', $code)->first()) {
@@ -26,7 +26,7 @@ class CouponCodesController extends Controller
         }
 
         //调用检查优惠券是否可用接口
-        $record->checkAvailable();
+        $record->checkAvailable($request->user());
 
         return $record;
     }

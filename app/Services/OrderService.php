@@ -14,12 +14,22 @@ use Carbon\Carbon;
 
 class OrderService
 {
+    /**
+     * @author: wenyuling(wenyuling10@163.com)
+     * @dateTime: 2018/12/1 上午10:16
+     * @param User $user
+     * @param UserAddress $address
+     * @param $remark
+     * @param $items
+     * @param CouponCode|null $coupon
+     * @return mixed
+     * @throws CouponCodeUnavailableException
+     */
     public function store(User $user, UserAddress $address, $remark, $items, CouponCode $coupon = null)
     {
         // 如果传入了优惠券，则先检查是否可用
         if ($coupon) {
-            // 但此时我们还没有计算出订单总金额，因此先不校验
-            $coupon->checkAvailable();
+            $coupon->checkAvailable($user);
         }
 
         // 开启一个数据库事务
@@ -61,7 +71,7 @@ class OrderService
             }
             if ($coupon) {
                 // 总金额已经计算出来了，检查是否符合优惠券规则
-                $coupon->checkAvailable($totalAmount);
+                $coupon->checkAvailable($user, $totalAmount);
                 // 把订单金额修改为优惠后的金额
                 $totalAmount = $coupon->getAdjustedPrice($totalAmount);
                 // 将订单与优惠券关联
