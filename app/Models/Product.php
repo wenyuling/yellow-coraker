@@ -20,4 +20,15 @@ class Product extends Model
     {
         return $this->hasMany(ProductSku::class);
     }
+
+    /**
+     * 关联类目表
+     * @author: wenyuling(wenyuling10@163.com)
+     * @dateTime: 2018/12/1 下午3:52
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
