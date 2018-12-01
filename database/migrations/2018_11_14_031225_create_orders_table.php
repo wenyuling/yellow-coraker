@@ -33,6 +33,7 @@ class CreateOrdersTable extends Migration
             $table->text('extra')->nullable()->comment('其他额外的数据');
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE `weixin` comment'订单表'");
     }
 
     /**

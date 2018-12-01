@@ -23,6 +23,7 @@ class CreateUserFavoriteProductsTable extends Migration
                 ->comment('级联删除, 一旦删除了商品,所关联的用户商品也会删除');
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE `weixin` comment'用户关联商品表'");
     }
 
     /**
