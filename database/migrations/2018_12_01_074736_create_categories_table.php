@@ -23,7 +23,7 @@ class CreateCategoriesTable extends Migration
             $table->string('path')->comment('该类目所有父类目 id');
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE `products` comment'类目表'");
+        DB::statement("ALTER TABLE `categories` comment'类目表'");
     }
 
     /**

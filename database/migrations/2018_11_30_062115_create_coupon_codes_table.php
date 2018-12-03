@@ -27,7 +27,7 @@ class CreateCouponCodesTable extends Migration
             $table->boolean('enabled')->comment('优惠券是否生效');
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE `products` comment'优惠券表'");
+        DB::statement("ALTER TABLE `coupon_codes` comment'优惠券表'");
     }
 
     /**

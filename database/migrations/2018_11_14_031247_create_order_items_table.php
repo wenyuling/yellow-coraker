@@ -27,7 +27,7 @@ class CreateOrderItemsTable extends Migration
             $table->text('review')->nullable()->comment('用户评价');
             $table->timestamp('reviewed_at')->nullable()->comment('评价时间');
         });
-        DB::statement("ALTER TABLE `weixin` comment'订单详情表'");
+        DB::statement("ALTER TABLE `order_items` comment'订单详情表'");
     }
 
     /**
