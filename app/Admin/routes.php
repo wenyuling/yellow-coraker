@@ -38,4 +38,10 @@ Route::group([
     $router->delete('categories/{id}', 'CategoriesController@destroy'); //类目删除
     $router->get('api/categories', 'CategoriesController@apiIndex'); //类目下拉框搜索
 
+    $router->get('crowdfunding_products', 'CrowdfundingProductsController@index'); //众筹列表
+    $router->get('crowdfunding_products/create', 'CrowdfundingProductsController@create'); //创建众筹
+    $router->post('crowdfunding_products', 'CrowdfundingProductsController@store');
+    $router->get('crowdfunding_products/{id}/edit', 'CrowdfundingProductsController@edit'); //编辑众筹
+    $router->put('crowdfunding_products/{id}', 'CrowdfundingProductsController@update');
+
 });
