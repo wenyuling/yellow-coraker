@@ -62,6 +62,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('orders/{order}/apply_refund', 'OrdersController@applyRefund')->name('orders.apply_refund'); //提交退款申请的接口
 
         Route::get('coupon_codes/{code}', 'CouponCodesController@show')->name('coupon_codes.show'); //优惠券展示
+
+        Route::post('crowdfunding_orders', 'OrdersController@crowdfunding')->name('crowdfunding_orders.store'); //下单请求
     });
 
 });

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CrowdFundingOrderRequest;
+use App\Models\ProductSku;
 use App\Events\OrderReviewed;
 use App\Exceptions\CouponCodeUnavailableException;
 use App\Http\Requests\ApplyRefundRequest;
@@ -190,6 +192,24 @@ class OrdersController extends Controller
         ]);
 
         return $order;
+    }
+
+    /**
+     * 创建一个新的方法用于接受众筹商品下单请求
+     * @author: wenyuling(wenyuling10@163.com)
+     * @dateTime: 2018/12/4 下午3:06
+     * @param CrowdFundingOrderRequest $request
+     * @param OrderService $orderService
+     * @return mixed
+     */
+    public function crowdfunding(CrowdFundingOrderRequest $request, OrderService $orderService)
+    {
+        $user    = $request->user();
+        $sku     = ProductSku::find($request->input('sku_id'));
+        $address = UserAddress::find($request->input('address_id'));
+        $amount  = $request->input('amount');
+
+        return $orderService->crowdfunding($user, $address, $sku, $amount);
     }
 
 
