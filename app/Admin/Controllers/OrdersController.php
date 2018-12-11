@@ -231,6 +231,7 @@ class OrdersController extends Controller
         switch ($order->payment_method) {
             case 'wechat':
                 // 微信的先留空
+                //'notify_url' => ngrok_url('payment.wechat.refund_notify'),
                 // todo
                 break;
             case 'alipay':
