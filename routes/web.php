@@ -68,6 +68,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::post('payment/{order}/installment', 'PaymentController@payByInstallment')->name('payment.installment'); //分期付款
         Route::get('installments', 'InstallmentsController@index')->name('installments.index'); //分期付款列表
         Route::get('installments/{installment}', 'InstallmentsController@show')->name('installments.show'); //分期付款详情页
+        Route::get('installments/{installment}/alipay', 'InstallmentsController@payByAlipay')->name('installments.alipay'); //拉起支付（分期付款）
+        Route::get('installments/alipay/return', 'InstallmentsController@alipayReturn')->name('installments.alipay.return'); //支付宝前端回调 （分期付款）
     });
 
 });
@@ -82,3 +84,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('products/{product}', 'ProductsController@show')->name('products.show'); //商品详情
+
+// 后端回调不能放在 auth 中间件中
+Route::post('installments/alipay/notify', 'InstallmentsController@alipayNotify')->name('installments.alipay.notify'); //支付宝后端回调（分期付款）
